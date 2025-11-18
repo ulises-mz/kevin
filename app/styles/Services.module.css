@@ -1,0 +1,202 @@
+.services {
+  background: var(--light);
+  padding: var(--spacing-3xl) 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: var(--dark);
+  margin-bottom: var(--spacing-md);
+}
+
+.titleUnderline {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  margin: 0 auto var(--spacing-md);
+  border-radius: 2px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Services Grid */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-3xl);
+}
+
+@media (min-width: 640px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .servicesGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+.serviceCard {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.serviceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.serviceCard:hover::before {
+  transform: scaleX(1);
+}
+
+.serviceIcon {
+  font-size: 3.5rem;
+  margin-bottom: var(--spacing-md);
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.serviceCard:hover .serviceIcon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.serviceTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: var(--spacing-sm);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.serviceDescription {
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: var(--spacing-md);
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* Features List */
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.checkmark {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* CTA Box */
+.ctaBox {
+  background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 768px) {
+  .ctaBox {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
+}
+
+.ctaTitle {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--white);
+  margin-bottom: var(--spacing-sm);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.ctaText {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--secondary);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+.ctaButton:hover {
+  background: #d97706;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+  color: var(--white);
+}
