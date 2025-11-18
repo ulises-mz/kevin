@@ -1,16 +1,33 @@
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap');
 
-/* Variables CSS */
+/* Variables CSS - Industrial Theme */
 :root {
-  --primary: #1E40AF;
-  --secondary: #F59E0B;
-  --dark: #0F172A;
-  --light: #F8FAFC;
+  /* Paleta Industrial/Metálica */
+  --steel-dark: #1a1d29;
+  --steel-medium: #2d3142;
+  --steel-light: #4f5d75;
+  --steel-lighter: #bfc0c0;
+  --metal-shine: #e8e9eb;
+
+  --primary: #0a0e27;        /* Azul oscuro industrial */
+  --secondary: #d4af37;      /* Dorado metálico */
+  --accent: #ff6b35;         /* Naranja industrial */
+  --accent-blue: #00d4ff;    /* Azul neón */
+
+  --dark: #0d0f14;
+  --dark-alt: #1a1d29;
+  --light: #f5f5f5;
   --white: #FFFFFF;
-  --accent: #DC2626;
-  --text: #334155;
-  --border: #E2E8F0;
+  --text: #2d3142;
+  --text-light: #6b7280;
+  --border: #d1d5db;
+
+  /* Gradientes Metálicos */
+  --gradient-steel: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-metal: linear-gradient(135deg, #4f5d75 0%, #2d3142 100%);
+  --gradient-gold: linear-gradient(135deg, #f5af19 0%, #d4af37 100%);
+  --gradient-dark: linear-gradient(135deg, #0d0f14 0%, #1a1d29 100%);
 
   /* Espaciado */
   --spacing-xs: 8px;
@@ -20,17 +37,33 @@
   --spacing-xl: 48px;
   --spacing-2xl: 64px;
   --spacing-3xl: 80px;
+  --spacing-4xl: 120px;
 
-  /* Border radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  /* Border radius industrial */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  /* Sombras profundas y profesionales */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0 30px 60px rgba(0, 0, 0, 0.4);
+
+  /* Sombras metálicas */
+  --shadow-metal: 0 8px 16px rgba(45, 49, 66, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.3);
+  --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.5);
+
+  /* Efectos de brillo metálico */
+  --shimmer: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 /* Reset y base */
@@ -43,15 +76,20 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--text);
-  background: var(--light);
+  background: var(--dark);
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Tipografía */
@@ -189,20 +227,79 @@ button:disabled {
   color: var(--white);
 }
 
-/* Scrollbar personalizada */
+/* Scrollbar personalizada - Industrial */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--light);
+  background: var(--dark-alt);
+  border-left: 1px solid var(--steel-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 5px;
+  background: var(--gradient-gold);
+  border-radius: 0;
+  border: 2px solid var(--dark-alt);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1e3a8a;
+  background: var(--secondary);
+  box-shadow: var(--shadow-gold);
+}
+
+/* Animaciones Keyframes */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.6); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Efectos de textura metálica */
+.metal-texture {
+  position: relative;
+  overflow: hidden;
+}
+
+.metal-texture::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(255, 255, 255, 0.03) 4px
+  );
+  pointer-events: none;
+  animation: rotate-slow 60s linear infinite;
 }
