@@ -5,15 +5,16 @@
   right: 0;
   z-index: 1000;
   padding: 1.5rem 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: transparent;
 }
 
 .header.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  box-shadow: var(--shadow-md);
+  background: rgba(13, 15, 20, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 1px rgba(212, 175, 55, 0.3);
   padding: 1rem 0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
 }
 
 .container {
@@ -26,31 +27,43 @@
   gap: var(--spacing-lg);
 }
 
-/* Logo */
+/* Logo Industrial */
 .logo a {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 1.5rem;
+  gap: 0.4rem;
+  font-family: 'Rajdhani', 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
   text-decoration: none;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
 }
 
 .logo a:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
 }
 
 .logoText {
-  color: var(--dark);
+  color: var(--white);
+  text-transform: uppercase;
 }
 
 .logoAccent {
-  color: var(--primary);
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  position: relative;
 }
 
-/* Navigation */
+.header.scrolled .logoText {
+  color: var(--steel-lighter);
+}
+
+/* Navigation Industrial */
 .nav {
   display: none;
   gap: var(--spacing-lg);
@@ -64,13 +77,16 @@
 }
 
 .navLink {
-  font-weight: 500;
-  font-size: 1rem;
-  color: var(--dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--steel-lighter);
   text-decoration: none;
   position: relative;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   padding: 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .navLink::after {
@@ -80,23 +96,39 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--primary);
-  transition: width 0.3s ease;
+  background: var(--gradient-gold);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  width: 4px;
+  height: 0;
+  background: var(--accent-blue);
+  transform: translateY(-50%);
+  transition: height 0.3s ease;
 }
 
 .navLink:hover {
-  color: var(--primary);
+  color: var(--secondary);
 }
 
 .navLink:hover::after {
   width: 100%;
 }
 
-.header.scrolled .navLink {
-  color: var(--text);
+.navLink:hover::before {
+  height: 100%;
 }
 
-/* CTA Button */
+.header.scrolled .navLink {
+  color: var(--steel-lighter);
+}
+
+/* CTA Button Industrial */
 .ctaContainer {
   display: none;
 }
@@ -109,34 +141,61 @@
 
 .ctaButton {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: var(--primary);
-  color: var(--white);
-  font-weight: 600;
-  font-size: 0.95rem;
-  border-radius: var(--radius-md);
+  padding: 0.8rem 1.8rem;
+  background: var(--gradient-gold);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-gold);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Rajdhani', sans-serif;
+  border: 1px solid var(--secondary);
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.ctaButton:hover::before {
+  left: 100%;
 }
 
 .ctaButton:hover {
-  background: #1e3a8a;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  color: var(--white);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+  color: var(--dark);
 }
 
-/* Mobile Menu Button */
+/* Mobile Menu Button Industrial */
 .mobileMenuButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
-  border: none;
+  background: rgba(79, 93, 117, 0.2);
+  border: 1px solid var(--steel-light);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.6rem;
   z-index: 1001;
+  transition: all 0.3s ease;
+}
+
+.mobileMenuButton:hover {
+  background: rgba(79, 93, 117, 0.3);
+  border-color: var(--secondary);
 }
 
 @media (min-width: 768px) {
@@ -148,41 +207,43 @@
 .hamburger {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 26px;
-  height: 20px;
+  gap: 4px;
+  width: 24px;
+  height: 18px;
 }
 
 .hamburger span {
   display: block;
   width: 100%;
   height: 2px;
-  background: var(--dark);
+  background: var(--secondary);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .hamburger.open span:nth-child(2) {
   opacity: 0;
+  transform: translateX(10px);
 }
 
 .hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .header.scrolled .hamburger span {
-  background: var(--text);
+  background: var(--secondary);
 }
 
-/* Mobile Menu */
+/* Mobile Menu Industrial */
 .mobileMenu {
   overflow: hidden;
-  background: var(--white);
-  box-shadow: var(--shadow-lg);
+  background: var(--gradient-metal);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+  border-top: 2px solid var(--secondary);
 }
 
 @media (min-width: 768px) {
@@ -199,32 +260,45 @@
 }
 
 .mobileNavLink {
-  padding: 1rem;
-  color: var(--text);
-  font-weight: 500;
+  padding: 1rem 1.2rem;
+  color: var(--steel-lighter);
+  font-weight: 600;
   text-decoration: none;
   border-radius: var(--radius-sm);
   transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
 }
 
 .mobileNavLink:hover {
-  background: var(--light);
-  color: var(--primary);
+  background: rgba(79, 93, 117, 0.3);
+  color: var(--secondary);
+  border-left-color: var(--secondary);
+  transform: translateX(5px);
 }
 
 .mobileCtaButton {
   margin-top: 1rem;
   padding: 1rem;
-  background: var(--primary);
-  color: var(--white);
-  font-weight: 600;
+  background: var(--gradient-gold);
+  color: var(--dark);
+  font-weight: 700;
   text-align: center;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   text-decoration: none;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Rajdhani', sans-serif;
+  border: 1px solid var(--secondary);
 }
 
 .mobileCtaButton:hover {
-  background: #1e3a8a;
-  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+  color: var(--dark);
 }

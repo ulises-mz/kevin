@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
 import styles from '../styles/Services.module.css';
 
@@ -48,10 +49,16 @@ export default function Services() {
       <div className={styles.container}>
         <ScrollReveal>
           <div className={styles.header}>
-            <h2 className={styles.title}>Nuestros Servicios</h2>
-            <div className={styles.titleUnderline}></div>
+            <div className={styles.badge}>
+              <span className={styles.badgeIcon}>⚡</span>
+              Nuestros Servicios
+            </div>
+            <h2 className={styles.title}>
+              <span className={styles.titleLine1}>Soluciones</span>
+              <span className={styles.titleLine2}>Integrales de Transporte</span>
+            </h2>
             <p className={styles.subtitle}>
-              Soluciones integrales de transporte de carga pesada adaptadas a sus necesidades
+              Servicios especializados de carga pesada adaptados a las necesidades de cada cliente
             </p>
           </div>
         </ScrollReveal>
@@ -59,7 +66,10 @@ export default function Services() {
         <div className={styles.servicesGrid}>
           {services.map((service, index) => (
             <ScrollReveal key={index} delay={0.1 * index}>
-              <div className={styles.serviceCard}>
+              <motion.div
+                className={styles.serviceCard}
+                whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
+              >
                 <div className={styles.serviceIcon}>{service.icon}</div>
                 <h3 className={styles.serviceTitle}>{service.title}</h3>
                 <p className={styles.serviceDescription}>{service.description}</p>
@@ -71,14 +81,14 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </ScrollReveal>
           ))}
         </div>
 
         <ScrollReveal delay={0.6}>
           <div className={styles.ctaBox}>
-            <h3 className={styles.ctaTitle}>¿Necesita un servicio especializado?</h3>
+            <h3 className={styles.ctaTitle}>¿Necesita un Servicio Especializado?</h3>
             <p className={styles.ctaText}>
               Contáctenos y encontraremos la mejor solución para su carga
             </p>

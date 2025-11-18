@@ -1,13 +1,14 @@
 .cta {
   position: relative;
-  padding: var(--spacing-3xl) 0;
+  padding: var(--spacing-4xl) 0;
   overflow: hidden;
-  min-height: 600px;
+  min-height: 700px;
   display: flex;
   align-items: center;
+  background: var(--dark-alt);
 }
 
-/* Animated Background */
+/* Industrial Background */
 .background {
   position: absolute;
   top: 0;
@@ -16,10 +17,10 @@
   bottom: 0;
   background: linear-gradient(
     -45deg,
-    var(--primary),
-    #1e3a8a,
-    var(--dark),
-    #0c1829
+    var(--steel-dark),
+    var(--steel-medium),
+    #1a1d29,
+    var(--dark)
   );
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
@@ -38,7 +39,16 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(15, 23, 42, 0.3);
+  background: radial-gradient(
+    circle at 30% 50%,
+    rgba(0, 212, 255, 0.05) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at 70% 80%,
+    rgba(212, 175, 55, 0.05) 0%,
+    transparent 50%
+  );
 }
 
 .container {
@@ -59,26 +69,52 @@
   text-align: center;
 }
 
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+  backdrop-filter: blur(10px);
+}
+
+.badgeIcon {
+  font-size: 1.1rem;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
 .title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: var(--white);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: var(--spacing-md);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-family: 'Rajdhani', 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  line-height: 1.2;
 }
 
 .subtitle {
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--steel-lighter);
   margin-bottom: var(--spacing-3xl);
-  line-height: 1.6;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  line-height: 1.7;
+  opacity: 0.95;
 }
 
-/* Contact Methods */
+/* Contact Methods Industrial */
 .contactMethods {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   margin-bottom: var(--spacing-3xl);
 }
 
@@ -95,13 +131,28 @@
   align-items: center;
   gap: var(--spacing-md);
   padding: var(--spacing-xl);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--gradient-metal);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-lg);
+  border: 2px solid var(--steel-light);
+  border-radius: var(--radius-md);
   color: var(--white);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-metal);
+}
+
+.contactButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
 
 @media (min-width: 768px) {
@@ -111,56 +162,112 @@
 }
 
 .contactButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 212, 255, 0.2);
+  border-color: var(--accent-blue);
+}
+
+.contactButton:hover::before {
+  transform: scaleX(1);
+}
+
+.contactButton.whatsapp::before {
+  background: linear-gradient(90deg, #25d366, #128c7e);
 }
 
 .contactButton.whatsapp:hover {
-  background: rgba(37, 211, 102, 0.2);
-  border-color: rgba(37, 211, 102, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(37, 211, 102, 0.3);
+  border-color: #25d366;
+}
+
+.contactButton.phone::before {
+  background: var(--gradient-gold);
 }
 
 .contactButton.phone:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.3);
+  border-color: var(--secondary);
+}
+
+.contactButton.email::before {
+  background: linear-gradient(90deg, var(--accent-blue), #0ea5e9);
 }
 
 .contactButton.email:hover {
-  background: rgba(245, 158, 11, 0.2);
-  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 212, 255, 0.3);
+  border-color: var(--accent-blue);
 }
 
 .icon {
   width: 32px;
   height: 32px;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+.contactButton:hover .icon {
+  transform: scale(1.15) rotate(5deg);
 }
 
 .buttonLabel {
   font-size: 0.9rem;
   font-weight: 600;
+  color: var(--steel-lighter);
   opacity: 0.9;
   margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .buttonValue {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Rajdhani', 'Montserrat', sans-serif;
+  color: var(--white);
 }
 
-/* Info Box */
+.buttonGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+.contactButton:hover .buttonGlow {
+  width: 200%;
+  height: 200%;
+}
+
+/* Info Box Industrial */
 .infoBox {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-lg);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--gradient-metal);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid var(--steel-light);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
+  box-shadow: var(--shadow-metal);
+  position: relative;
+  overflow: hidden;
+}
+
+.infoBox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-gold);
 }
 
 @media (min-width: 768px) {
@@ -176,6 +283,17 @@
   align-items: center;
   text-align: center;
   gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: rgba(79, 93, 117, 0.2);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-blue);
+  transition: all 0.3s ease;
+}
+
+.infoItem:hover {
+  background: rgba(79, 93, 117, 0.3);
+  border-left-color: var(--secondary);
+  transform: translateX(5px);
 }
 
 @media (min-width: 768px) {
@@ -189,15 +307,19 @@
   flex-shrink: 0;
   width: 50px;
   height: 50px;
-  background: rgba(245, 158, 11, 0.2);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(245, 158, 11, 0.4);
-  color: var(--secondary);
+  background: var(--gradient-gold);
+  color: var(--dark);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  box-shadow: var(--shadow-gold);
+  transition: transform 0.3s ease;
+}
+
+.infoItem:hover .infoIcon {
+  transform: rotate(360deg) scale(1.1);
 }
 
 .infoItem h4 {
@@ -205,10 +327,12 @@
   color: var(--white);
   margin-bottom: 0.25rem;
   font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .infoItem p {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.5;
+  color: var(--steel-lighter);
+  line-height: 1.6;
+  opacity: 0.9;
 }

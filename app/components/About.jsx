@@ -1,5 +1,7 @@
 'use client';
 
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 import ScrollReveal from './ScrollReveal';
 import styles from '../styles/About.module.css';
 
@@ -32,8 +34,14 @@ export default function About() {
       <div className={styles.container}>
         <ScrollReveal>
           <div className={styles.header}>
-            <h2 className={styles.title}>Una Historia Familiar de Superación</h2>
-            <div className={styles.titleUnderline}></div>
+            <div className={styles.badge}>
+              <span className={styles.badgeIcon}>⚡</span>
+              Nuestra Historia
+            </div>
+            <h2 className={styles.title}>
+              <span className={styles.titleLine1}>Una Historia Familiar</span>
+              <span className={styles.titleLine2}>de Superación</span>
+            </h2>
           </div>
         </ScrollReveal>
 
@@ -57,9 +65,17 @@ export default function About() {
 
           <ScrollReveal delay={0.3}>
             <div className={styles.imageContainer}>
-              <div className={styles.imagePlaceholder}>
-                <div className={styles.imageIcon}>🚛</div>
-                <p>Transportes GEMA</p>
+              <div className={styles.imageWrapper}>
+                <Image
+                  src="/images/WhatsApp Image 2025-11-18 at 15.44.09_a9729be9.jpg"
+                  alt="Transportes GEMA - Nuestra Historia"
+                  fill
+                  className={styles.aboutImage}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={85}
+                />
+                <div className={styles.imageOverlay}></div>
+                <div className={styles.imageShine}></div>
               </div>
             </div>
           </ScrollReveal>
@@ -68,11 +84,15 @@ export default function About() {
         <div className={styles.valuesGrid}>
           {values.map((value, index) => (
             <ScrollReveal key={index} delay={0.1 * index}>
-              <div className={styles.valueCard}>
+              <motion.div
+                className={styles.valueCard}
+                whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
+              >
                 <div className={styles.valueIcon}>{value.icon}</div>
                 <h3 className={styles.valueTitle}>{value.title}</h3>
                 <p className={styles.valueDescription}>{value.description}</p>
-              </div>
+                <div className={styles.valueGlow}></div>
+              </motion.div>
             </ScrollReveal>
           ))}
         </div>

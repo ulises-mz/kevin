@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
 import styles from '../styles/Coverage.module.css';
 
@@ -36,8 +37,14 @@ export default function Coverage() {
       <div className={styles.container}>
         <ScrollReveal>
           <div className={styles.header}>
-            <h2 className={styles.title}>Operamos en Todo Costa Rica</h2>
-            <div className={styles.titleUnderline}></div>
+            <div className={styles.badge}>
+              <span className={styles.badgeIcon}>⚡</span>
+              Cobertura Nacional
+            </div>
+            <h2 className={styles.title}>
+              <span className={styles.titleLine1}>Operamos en</span>
+              <span className={styles.titleLine2}>Todo Costa Rica</span>
+            </h2>
             <p className={styles.subtitle}>
               Cobertura nacional completa para que su carga llegue a cualquier destino
             </p>
@@ -47,7 +54,10 @@ export default function Coverage() {
         <div className={styles.zonesGrid}>
           {zones.map((zone, index) => (
             <ScrollReveal key={index} delay={0.1 * index}>
-              <div className={`${styles.zoneCard} ${styles[zone.color]}`}>
+              <motion.div
+                className={`${styles.zoneCard} ${styles[zone.color]}`}
+                whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
+              >
                 <div className={styles.zoneIcon}>{zone.icon}</div>
                 <h3 className={styles.zoneTitle}>{zone.title}</h3>
                 <ul className={styles.locationsList}>
@@ -58,7 +68,8 @@ export default function Coverage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+                <div className={styles.zoneGlow}></div>
+              </motion.div>
             </ScrollReveal>
           ))}
         </div>

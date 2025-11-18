@@ -1,6 +1,8 @@
 .coverage {
-  background: var(--light);
-  padding: var(--spacing-3xl) 0;
+  background: var(--dark);
+  padding: var(--spacing-4xl) 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .container {
@@ -15,41 +17,86 @@
   }
 }
 
-/* Header */
+/* Header Industrial */
 .header {
   text-align: center;
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: var(--spacing-4xl);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+  backdrop-filter: blur(10px);
+}
+
+.badgeIcon {
+  font-size: 1.1rem;
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 .title {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  color: var(--dark);
-  margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: var(--spacing-lg);
 }
 
-.titleUnderline {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  margin: 0 auto var(--spacing-md);
-  border-radius: 2px;
+.titleLine1 {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: var(--steel-lighter);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.titleLine2 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Rajdhani', 'Montserrat', sans-serif;
+  position: relative;
+}
+
+.titleLine2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: var(--gradient-gold);
+  opacity: 0.5;
 }
 
 .subtitle {
-  font-size: 1.1rem;
-  color: var(--text);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--steel-lighter);
   max-width: 700px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.7;
   opacity: 0.9;
 }
 
-/* Zones Grid */
+/* Zones Grid Industrial */
 .zonesGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: var(--spacing-4xl);
 }
 
 @media (min-width: 640px) {
@@ -61,18 +108,21 @@
 @media (min-width: 1024px) {
   .zonesGrid {
     grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
   }
 }
 
 .zoneCard {
-  background: var(--white);
-  border: 2px solid var(--border);
-  border-radius: var(--radius-lg);
+  background: var(--gradient-metal);
+  border: 2px solid var(--steel-light);
+  border-radius: var(--radius-md);
   padding: var(--spacing-xl);
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-metal);
+  cursor: default;
 }
 
 .zoneCard::before {
@@ -81,31 +131,32 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 5px;
+  height: 4px;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 .zoneCard.blue::before {
-  background: #3b82f6;
+  background: var(--accent-blue);
 }
 
 .zoneCard.orange::before {
-  background: var(--secondary);
+  background: var(--gradient-gold);
 }
 
 .zoneCard.green::before {
-  background: #10b981;
+  background: linear-gradient(90deg, #10b981, #34d399);
 }
 
 .zoneCard.purple::before {
-  background: #8b5cf6;
+  background: linear-gradient(90deg, #8b5cf6, #a78bfa);
 }
 
 .zoneCard:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 212, 255, 0.2);
+  border-color: var(--accent-blue);
 }
 
 .zoneCard:hover::before {
@@ -116,19 +167,22 @@
   font-size: 3.5rem;
   margin-bottom: var(--spacing-md);
   display: inline-block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
   transition: transform 0.3s ease;
 }
 
 .zoneCard:hover .zoneIcon {
-  transform: scale(1.2);
+  transform: scale(1.2) rotateY(180deg);
 }
 
 .zoneTitle {
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--dark);
+  color: var(--white);
   margin-bottom: var(--spacing-md);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Rajdhani', 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .locationsList {
@@ -145,59 +199,119 @@
   align-items: center;
   gap: var(--spacing-sm);
   font-size: 0.95rem;
-  color: var(--text);
+  color: var(--steel-lighter);
   line-height: 1.5;
   justify-content: center;
 }
 
 .locationDot {
-  color: var(--primary);
+  color: var(--secondary);
   font-size: 1.5rem;
   line-height: 1;
 }
 
-/* Map Placeholder */
+.zoneGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+.zoneCard:hover .zoneGlow {
+  width: 200%;
+  height: 200%;
+}
+
+/* Map Placeholder Industrial */
 .mapPlaceholder {
-  background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+  background: var(--gradient-metal);
+  border: 2px solid var(--steel-light);
   border-radius: var(--radius-lg);
   padding: var(--spacing-3xl);
   text-align: center;
-  box-shadow: var(--shadow-lg);
-  margin-bottom: var(--spacing-3xl);
-  min-height: 300px;
+  box-shadow: var(--shadow-metal);
+  margin-bottom: var(--spacing-4xl);
+  min-height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.mapPlaceholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-gold);
+}
+
+.mapPlaceholder:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.2);
+  transform: scale(1.01);
 }
 
 .mapIcon {
   font-size: 5rem;
-  margin-bottom: var(--spacing-md);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  margin-bottom: var(--spacing-lg);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.mapPlaceholder:hover .mapIcon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .mapTitle {
-  font-size: 2rem;
-  color: var(--white);
-  margin-bottom: var(--spacing-sm);
-  font-family: 'Montserrat', sans-serif;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--spacing-md);
+  font-family: 'Rajdhani', 'Montserrat', sans-serif;
+  font-weight: 900;
 }
 
 .mapText {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--steel-lighter);
   max-width: 600px;
-  line-height: 1.6;
+  line-height: 1.8;
+  opacity: 0.95;
 }
 
-/* Guarantee Box */
+/* Guarantee Box Industrial */
 .guaranteeBox {
-  background: var(--white);
-  border: 2px solid var(--border);
+  background: var(--gradient-metal);
+  border: 2px solid var(--steel-light);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
+  box-shadow: var(--shadow-metal);
+  position: relative;
+  overflow: hidden;
+}
+
+.guaranteeBox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-gold);
 }
 
 @media (min-width: 768px) {
@@ -208,10 +322,13 @@
 
 .guaranteeTitle {
   font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--dark);
+  color: var(--white);
   text-align: center;
   margin-bottom: var(--spacing-xl);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Rajdhani', 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .guaranteeGrid {
@@ -233,6 +350,17 @@
   align-items: center;
   text-align: center;
   gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: rgba(79, 93, 117, 0.2);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-blue);
+  transition: all 0.3s ease;
+}
+
+.guaranteeItem:hover {
+  background: rgba(79, 93, 117, 0.3);
+  border-left-color: var(--secondary);
+  transform: translateX(5px);
 }
 
 @media (min-width: 768px) {
@@ -246,25 +374,32 @@
   flex-shrink: 0;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, var(--primary), #1e3a8a);
-  color: var(--white);
+  background: var(--gradient-gold);
+  color: var(--dark);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
+  box-shadow: var(--shadow-gold);
+  transition: transform 0.3s ease;
+}
+
+.guaranteeItem:hover .guaranteeIcon {
+  transform: rotate(360deg) scale(1.1);
 }
 
 .guaranteeItem h4 {
   font-size: 1.15rem;
-  color: var(--dark);
+  color: var(--white);
   margin-bottom: 0.25rem;
   font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .guaranteeItem p {
   font-size: 0.95rem;
-  color: var(--text);
+  color: var(--steel-lighter);
   opacity: 0.9;
-  line-height: 1.5;
+  line-height: 1.6;
 }

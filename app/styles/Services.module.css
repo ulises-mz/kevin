@@ -1,12 +1,29 @@
 .services {
-  background: var(--light);
-  padding: var(--spacing-3xl) 0;
+  background: var(--dark);
+  padding: var(--spacing-4xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -15,40 +32,85 @@
   }
 }
 
-/* Header */
+/* Header Industrial */
 .header {
   text-align: center;
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: var(--spacing-4xl);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+  backdrop-filter: blur(10px);
+}
+
+.badgeIcon {
+  font-size: 1.1rem;
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 .title {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  color: var(--dark);
-  margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: var(--spacing-lg);
 }
 
-.titleUnderline {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  margin: 0 auto var(--spacing-md);
-  border-radius: 2px;
+.titleLine1 {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: var(--steel-lighter);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.titleLine2 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Rajdhani', 'Montserrat', sans-serif;
+  position: relative;
+}
+
+.titleLine2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: var(--gradient-gold);
+  opacity: 0.5;
 }
 
 .subtitle {
-  font-size: 1.1rem;
-  color: var(--text);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--steel-lighter);
   max-width: 700px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.7;
   opacity: 0.9;
 }
 
-/* Services Grid */
+/* Services Grid Premium */
 .servicesGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-xl);
   margin-bottom: var(--spacing-3xl);
 }
 
@@ -61,19 +123,20 @@
 @media (min-width: 1024px) {
   .servicesGrid {
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
+    gap: var(--spacing-2xl);
   }
 }
 
 .serviceCard {
-  background: var(--white);
-  border: 2px solid var(--border);
+  background: var(--gradient-metal);
+  border: 2px solid var(--steel-light);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: default;
+  padding: var(--spacing-2xl);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-metal);
 }
 
 .serviceCard::before {
@@ -83,50 +146,76 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background: var(--gradient-gold);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.serviceCard::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: all 0.6s ease;
+  pointer-events: none;
 }
 
 .serviceCard:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--primary);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.2);
+  border-color: var(--secondary);
 }
 
 .serviceCard:hover::before {
   transform: scaleX(1);
 }
 
+.serviceCard:hover::after {
+  width: 400px;
+  height: 400px;
+}
+
 .serviceIcon {
-  font-size: 3.5rem;
-  margin-bottom: var(--spacing-md);
+  font-size: 4rem;
+  margin-bottom: var(--spacing-lg);
   display: inline-block;
-  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.4));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .serviceCard:hover .serviceIcon {
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.15) rotateY(180deg);
+  filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.4));
 }
 
 .serviceTitle {
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--dark);
-  margin-bottom: var(--spacing-sm);
-  font-family: 'Montserrat', sans-serif;
+  color: var(--white);
+  margin-bottom: var(--spacing-md);
+  font-family: 'Rajdhani', 'Montserrat', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.serviceCard:hover .serviceTitle {
+  color: var(--secondary);
 }
 
 .serviceDescription {
   font-size: 1rem;
-  color: var(--text);
-  margin-bottom: var(--spacing-md);
+  color: var(--steel-lighter);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.7;
   opacity: 0.9;
-  line-height: 1.6;
 }
 
-/* Features List */
+/* Features List Premium */
 .featuresList {
   list-style: none;
   padding: 0;
@@ -141,62 +230,130 @@
   align-items: center;
   gap: var(--spacing-sm);
   font-size: 0.95rem;
-  color: var(--text);
-  line-height: 1.5;
+  color: var(--steel-lighter);
+  line-height: 1.6;
+  transition: all 0.3s ease;
+  padding-left: 0;
+}
+
+.serviceCard:hover .featureItem {
+  padding-left: 5px;
 }
 
 .checkmark {
-  color: var(--primary);
+  color: var(--accent-blue);
   font-weight: 700;
   font-size: 1.1rem;
   flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-/* CTA Box */
+.serviceCard:hover .checkmark {
+  color: var(--secondary);
+  transform: scale(1.2);
+}
+
+/* CTA Box Industrial */
 .ctaBox {
-  background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
+  background: var(--gradient-metal);
+  border: 2px solid var(--steel-light);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-2xl);
   text-align: center;
   box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaBox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-gold);
+}
+
+.ctaBox::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse-glow 4s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @media (min-width: 768px) {
   .ctaBox {
-    padding: var(--spacing-2xl) var(--spacing-xl);
+    padding: var(--spacing-3xl) var(--spacing-2xl);
   }
 }
 
 .ctaTitle {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: var(--white);
-  margin-bottom: var(--spacing-sm);
-  font-family: 'Montserrat', sans-serif;
+  margin-bottom: var(--spacing-md);
+  font-family: 'Rajdhani', 'Montserrat', sans-serif;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
 }
 
 .ctaText {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.95);
-  margin-bottom: var(--spacing-lg);
+  font-size: 1.15rem;
+  color: var(--steel-lighter);
+  margin-bottom: var(--spacing-xl);
   line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .ctaButton {
   display: inline-block;
-  padding: 1rem 2.5rem;
-  background: var(--secondary);
-  color: var(--white);
-  font-weight: 600;
-  font-size: 1rem;
-  border-radius: var(--radius-md);
+  padding: 1.2rem 3rem;
+  background: var(--gradient-gold);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-gold);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Rajdhani', sans-serif;
+  border: 2px solid var(--secondary);
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.ctaButton:hover::before {
+  left: 100%;
 }
 
 .ctaButton:hover {
-  background: #d97706;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
-  color: var(--white);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+  color: var(--dark);
 }
