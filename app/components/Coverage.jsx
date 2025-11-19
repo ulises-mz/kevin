@@ -119,9 +119,10 @@ export default function Coverage() {
               <div className={styles.mapOverlay}></div>
             </div>
             <div className={styles.mapContent}>
-              <h3 className={styles.mapTitle}>Mapa de Costa Rica</h3>
+              <h3 className={styles.mapTitle}>Cobertura Nacional Completa</h3>
               <p className={styles.mapText}>
-                Desde puertos hasta el interior del país, llegamos a donde su carga necesita estar
+                Desde los puertos del Atlántico y Pacífico hasta el interior del país,
+                llegamos a donde su carga necesita estar. Sin restricciones de zona.
               </p>
             </div>
           </div>
