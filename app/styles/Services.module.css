@@ -135,6 +135,13 @@
   display: flex;
   gap: 3rem;
   align-items: flex-start;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .stickyLayout {
+    min-height: 100vh;
+  }
 }
 
 @media (max-width: 1023px) {
@@ -169,7 +176,8 @@
   padding: 1rem;
   box-shadow: var(--shadow-metal);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  will-change: auto;
 }
 
 .tabsContainer::before {
@@ -180,6 +188,7 @@
   right: 0;
   height: 3px;
   background: var(--gradient-gold);
+  border-radius: 1rem 1rem 0 0;
 }
 
 .tabsList {
@@ -199,22 +208,21 @@
   padding: 1rem;
   text-align: left;
   cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s ease-out;
   border-radius: 0.75rem;
   position: relative;
 }
 
 .tab:hover {
-  background: rgba(79, 93, 117, 0.2);
-  transform: translateX(4px);
+  background: rgba(79, 93, 117, 0.15);
 }
 
 .tabActive {
-  background: rgba(0, 212, 255, 0.08);
+  background: transparent;
 }
 
 .tabActive:hover {
-  background: rgba(0, 212, 255, 0.12);
+  background: rgba(0, 212, 255, 0.05);
 }
 
 .tabContent {
@@ -226,13 +234,18 @@
 .tabTitle {
   font-size: 1.125rem;
   font-weight: 600;
-  color: rgba(205, 214, 244, 0.5);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  color: rgba(205, 214, 244, 0.4);
+  transition: all 0.5s ease-out;
+}
+
+.tab:hover .tabTitle {
+  color: rgba(205, 214, 244, 0.6);
 }
 
 .tabActive .tabTitle {
   font-size: 1.25rem;
   color: var(--white);
+  font-weight: 700;
 }
 
 .tabDescription {
