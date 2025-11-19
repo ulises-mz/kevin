@@ -39,7 +39,8 @@
 }
 
 .badgeIcon {
-  font-size: 1.1rem;
+  color: var(--secondary);
+  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
@@ -152,6 +153,14 @@
   margin-bottom: var(--spacing-md);
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
   transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statIconSvg {
+  color: var(--secondary);
+  filter: drop-shadow(0 4px 10px rgba(212, 175, 55, 0.3));
 }
 
 .statCard:hover .statIcon {

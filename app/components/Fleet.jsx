@@ -5,6 +5,7 @@ import { motion, useInView, useMotionValue, useSpring, useScroll, useTransform }
 import Image from 'next/image';
 import ScrollReveal from './ScrollReveal';
 import styles from '../styles/Fleet.module.css';
+import { LightningIcon, TruckIcon, GearIcon, MapPinIcon, ClockIcon } from './Icons';
 
 function AnimatedCounter({ value, suffix = '' }) {
   const ref = useRef(null);
@@ -37,10 +38,10 @@ function AnimatedCounter({ value, suffix = '' }) {
 
 export default function Fleet() {
   const stats = [
-    { number: 12, suffix: '+', label: 'Camiones', icon: '🚛' },
-    { number: 14, suffix: '+', label: 'Equipos de Arrastre', icon: '⚙️' },
-    { number: 100, suffix: '%', label: 'Cobertura Nacional', icon: '📍' },
-    { number: 24, suffix: '/7', label: 'Disponibilidad', icon: '⏰' },
+    { number: 12, suffix: '+', label: 'Camiones', Icon: TruckIcon },
+    { number: 14, suffix: '+', label: 'Equipos de Arrastre', Icon: GearIcon },
+    { number: 100, suffix: '%', label: 'Cobertura Nacional', Icon: MapPinIcon },
+    { number: 24, suffix: '/7', label: 'Disponibilidad', Icon: ClockIcon },
   ];
 
   // Imágenes reales de los camiones
@@ -83,7 +84,7 @@ export default function Fleet() {
         <ScrollReveal>
           <div className={styles.header}>
             <div className={styles.badge}>
-              <span className={styles.badgeIcon}>⚡</span>
+              <LightningIcon className={styles.badgeIcon} size={18} />
               Nuestra Flota
             </div>
             <h2 className={styles.title}>
@@ -106,7 +107,9 @@ export default function Fleet() {
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
               >
                 <div className={styles.statBorder}></div>
-                <div className={styles.statIcon}>{stat.icon}</div>
+                <div className={styles.statIcon}>
+                  <stat.Icon className={styles.statIconSvg} size={40} />
+                </div>
                 <div className={styles.statNumber}>
                   <AnimatedCounter value={stat.number} suffix={stat.suffix} />
                 </div>
