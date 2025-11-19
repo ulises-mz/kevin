@@ -109,7 +109,7 @@ export default function Coverage() {
           <div className={styles.mapContainer}>
             <div className={styles.mapImageWrapper}>
               <Image
-                src="/images/map.png"
+                src="/images/mapa.png"
                 alt="Mapa de Costa Rica - Cobertura Nacional Transportes GEMA"
                 fill
                 className={styles.mapImage}
