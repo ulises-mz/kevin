@@ -5,6 +5,19 @@
   overflow: hidden;
 }
 
+/* Decorative background */
+.decorativeTruck {
+  position: absolute;
+  top: 15%;
+  left: -15%;
+  width: 60%;
+  height: 50%;
+  pointer-events: none;
+  z-index: 0;
+  color: var(--steel-light);
+  opacity: 0.4;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -39,7 +52,8 @@
 }
 
 .badgeIcon {
-  font-size: 1.1rem;
+  color: var(--secondary);
+  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
@@ -239,6 +253,9 @@
   overflow: hidden;
   box-shadow: var(--shadow-metal);
   cursor: default;
+  display: flex;
+  flex-direction: column;
+  min-height: 240px; /* Consistent height */
 }
 
 .valueCard::before {
@@ -264,16 +281,35 @@
   border-color: var(--accent-blue);
 }
 
+.valueIconWrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+  border: 2px solid var(--steel-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-lg);
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.valueCard:hover .valueIconWrapper {
+  background: var(--gradient-gold);
+  border-color: var(--secondary);
+  transform: rotateY(180deg) scale(1.1);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+}
+
 .valueIcon {
-  font-size: 3rem;
-  margin-bottom: var(--spacing-md);
-  display: inline-block;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
-  transition: transform 0.3s ease;
+  color: var(--steel-lighter);
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
 }
 
 .valueCard:hover .valueIcon {
-  transform: scale(1.15) rotateY(180deg);
+  color: var(--dark);
 }
 
 .valueTitle {
