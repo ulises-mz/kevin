@@ -5,7 +5,7 @@ import { motion, useInView, useMotionValue, useSpring, useScroll, useTransform }
 import Image from 'next/image';
 import ScrollReveal from './ScrollReveal';
 import styles from '../styles/Fleet.module.css';
-import { LightningIcon, TruckIcon, GearIcon, MapPinIcon, ClockIcon } from './Icons';
+import { LightningIcon, TruckIcon, TrailerIcon, MapPinIcon, ClockIcon } from './Icons';
 
 function AnimatedCounter({ value, suffix = '' }) {
   const ref = useRef(null);
@@ -39,7 +39,7 @@ function AnimatedCounter({ value, suffix = '' }) {
 export default function Fleet() {
   const stats = [
     { number: 12, suffix: '+', label: 'Camiones', Icon: TruckIcon },
-    { number: 14, suffix: '+', label: 'Equipos de Arrastre', Icon: GearIcon },
+    { number: 14, suffix: '+', label: 'Equipos de Arrastre', Icon: TrailerIcon },
     { number: 100, suffix: '%', label: 'Cobertura Nacional', Icon: MapPinIcon },
     { number: 24, suffix: '/7', label: 'Disponibilidad', Icon: ClockIcon },
   ];

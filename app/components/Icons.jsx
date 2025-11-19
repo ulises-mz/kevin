@@ -1,12 +1,21 @@
 // SVG Icons para Transportes GEMA
 
+// Camión Cabezal/Tractor (sin remolque)
 export const TruckIcon = ({ className, size = 24 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
-    <path d="M18 18.5C18 19.8807 16.8807 21 15.5 21C14.1193 21 13 19.8807 13 18.5C13 17.1193 14.1193 16 15.5 16C16.8807 16 18 17.1193 18 18.5Z" fill="currentColor"/>
-    <path d="M8 18.5C8 19.8807 6.88071 21 5.5 21C4.11929 21 3 19.8807 3 18.5C3 17.1193 4.11929 16 5.5 16C6.88071 16 8 17.1193 8 18.5Z" fill="currentColor"/>
-    <path d="M1 6C1 4.89543 1.89543 4 3 4H11C12.1046 4 13 4.89543 13 6V16H1V6Z" stroke="currentColor" strokeWidth="2" fill="none"/>
-    <path d="M13 8H17L20 12V16H13V8Z" stroke="currentColor" strokeWidth="2" fill="none"/>
-    <path d="M17 8L20 12H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    {/* Ruedas traseras */}
+    <circle cx="16" cy="18" r="2.5" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <circle cx="16" cy="18" r="1" fill="currentColor"/>
+    {/* Cabina */}
+    <path d="M3 10C3 8.89543 3.89543 8 5 8H11C12.1046 8 13 8.89543 13 10V18H3V10Z" stroke="currentColor" strokeWidth="2" fill="none"/>
+    {/* Capó/Motor */}
+    <path d="M13 12H18V18H13V12Z" stroke="currentColor" strokeWidth="2" fill="none"/>
+    {/* Ventana */}
+    <rect x="5" y="10" width="5" height="3" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    {/* Parrilla frontal */}
+    <path d="M15 13V17M17 13V17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    {/* Escape */}
+    <path d="M11 8V6C11 5.44772 11.4477 5 12 5C12.5523 5 13 5.44772 13 6V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
   </svg>
 );
 
@@ -35,6 +44,24 @@ export const ChemicalIcon = ({ className, size = 24 }) => (
     <circle cx="8" cy="14" r="1" fill="currentColor"/>
     <circle cx="16" cy="14" r="1" fill="currentColor"/>
     <circle cx="12" cy="15" r="1" fill="currentColor"/>
+  </svg>
+);
+
+// Remolque/Furgón de Camión
+export const TrailerIcon = ({ className, size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+    {/* Estructura del remolque */}
+    <rect x="2" y="6" width="18" height="10" rx="1" stroke="currentColor" strokeWidth="2" fill="none"/>
+    {/* Ruedas */}
+    <circle cx="6" cy="18" r="2.5" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <circle cx="6" cy="18" r="1" fill="currentColor"/>
+    <circle cx="16" cy="18" r="2.5" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <circle cx="16" cy="18" r="1" fill="currentColor"/>
+    {/* Líneas decorativas del container */}
+    <path d="M2 9H20M2 12H20" stroke="currentColor" strokeWidth="1" opacity="0.5"/>
+    {/* Enganche */}
+    <circle cx="20" cy="11" r="1.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    <path d="M21.5 11H22.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
   </svg>
 );
 
