@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
 import styles from '../styles/Hero.module.css';
+import { LightningIcon, TruckIcon, GearIcon, MapPinIcon, ClockIcon } from './Icons';
 
 export default function Hero() {
   const ref = useRef(null);
@@ -17,10 +18,10 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
 
   const stats = [
-    { number: '12+', label: 'Camiones Propios', icon: '🚛' },
-    { number: '14+', label: 'Equipos de Arrastre', icon: '⚙️' },
-    { number: '100%', label: 'Cobertura Nacional', icon: '🗺️' },
-    { number: '24/7', label: 'Disponibilidad', icon: '⏰' },
+    { number: '12+', label: 'Camiones Propios', Icon: TruckIcon },
+    { number: '14+', label: 'Equipos de Arrastre', Icon: GearIcon },
+    { number: '100%', label: 'Cobertura Nacional', Icon: MapPinIcon },
+    { number: '24/7', label: 'Disponibilidad', Icon: ClockIcon },
   ];
 
   const features = [
@@ -104,7 +105,7 @@ export default function Hero() {
             className={styles.textContent}
           >
             <motion.div variants={itemVariants} className={styles.badge}>
-              <span className={styles.badgeIcon}>⚡</span>
+              <LightningIcon className={styles.badgeIcon} size={18} />
               +12 Años de Experiencia
             </motion.div>
 
@@ -163,7 +164,9 @@ export default function Hero() {
                 className={styles.statCard}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
-                <div className={styles.statIcon}>{stat.icon}</div>
+                <div className={styles.statIcon}>
+                  <stat.Icon className={styles.statIconSvg} size={36} />
+                </div>
                 <div className={styles.statNumber}>{stat.number}</div>
                 <div className={styles.statLabel}>{stat.label}</div>
                 <div className={styles.statShine}></div>
