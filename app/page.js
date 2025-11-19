@@ -6,6 +6,7 @@ import Fleet from './components/Fleet'
 import Coverage from './components/Coverage'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
+import FloatingWhatsApp from './components/FloatingWhatsApp'
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <CTASection />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </>
   )
 }
