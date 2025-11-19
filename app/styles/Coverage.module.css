@@ -5,6 +5,19 @@
   overflow: hidden;
 }
 
+/* Decorative background */
+.decorativeEngine {
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 35%;
+  height: 35%;
+  pointer-events: none;
+  z-index: 0;
+  color: var(--secondary);
+  opacity: 0.3;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -39,7 +52,8 @@
 }
 
 .badgeIcon {
-  font-size: 1.1rem;
+  color: var(--secondary);
+  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
@@ -123,6 +137,9 @@
   overflow: hidden;
   box-shadow: var(--shadow-metal);
   cursor: default;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px; /* Consistent height */
 }
 
 .zoneCard::before {
@@ -163,16 +180,35 @@
   transform: scaleX(1);
 }
 
+.zoneIconWrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+  border: 2px solid var(--steel-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-lg);
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.zoneCard:hover .zoneIconWrapper {
+  background: var(--gradient-gold);
+  border-color: var(--secondary);
+  transform: rotateY(180deg) scale(1.1);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+}
+
 .zoneIcon {
-  font-size: 3.5rem;
-  margin-bottom: var(--spacing-md);
-  display: inline-block;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
-  transition: transform 0.3s ease;
+  color: var(--steel-lighter);
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
 }
 
 .zoneCard:hover .zoneIcon {
-  transform: scale(1.2) rotateY(180deg);
+  color: var(--dark);
 }
 
 .zoneTitle {
@@ -205,9 +241,15 @@
 }
 
 .locationDot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
   color: var(--secondary);
-  font-size: 1.5rem;
-  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.locationItem:hover .locationDot {
+  transform: scale(1.3);
 }
 
 .zoneGlow {
@@ -370,23 +412,31 @@
   }
 }
 
-.guaranteeIcon {
+.guaranteeIconWrapper {
   flex-shrink: 0;
   width: 60px;
   height: 60px;
   background: var(--gradient-gold);
-  color: var(--dark);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
   box-shadow: var(--shadow-gold);
-  transition: transform 0.3s ease;
+  transition: all 0.4s ease;
+}
+
+.guaranteeItem:hover .guaranteeIconWrapper {
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+}
+
+.guaranteeIcon {
+  color: var(--dark);
+  transition: all 0.3s ease;
 }
 
 .guaranteeItem:hover .guaranteeIcon {
-  transform: rotate(360deg) scale(1.1);
+  transform: scale(1.1);
 }
 
 .guaranteeItem h4 {
