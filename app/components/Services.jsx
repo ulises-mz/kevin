@@ -321,50 +321,34 @@ export default function Services() {
 
         {/* Sticky Layout: Tabs + Content */}
         <div className={styles.stickyLayout}>
-          {/* Tabs sticky - Solo visible en desktop - CSS sticky puro */}
+          {/* Tabs sticky - Solo visible en desktop - CSS sticky puro SIN Framer Motion */}
           <aside className={styles.stickyTabs}>
-            {/* Contenido interno animado con Framer Motion */}
-            <motion.div
-              className={styles.tabsContainer}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            >
-              <ul className={styles.tabsList}>
-                {SERVICES.map((s, i) => (
-                  <motion.li
-                    key={s.id}
-                    className={styles.tabItem}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1, duration: 0.5 }}
+            <ul className={styles.tabsList}>
+              {SERVICES.map((s, i) => (
+                <li key={s.id} className={styles.tabItem}>
+                  <button
+                    onClick={() => scrollToIndex(i)}
+                    className={`${styles.tab} ${active === i ? styles.tabActive : ''}`}
                   >
-                    <button
-                      onClick={() => scrollToIndex(i)}
-                      className={`${styles.tab} ${active === i ? styles.tabActive : ''}`}
-                    >
-                      <div className={styles.tabContent}>
-                        <span className={styles.tabTitle}>{s.title}</span>
-                        <div className={`${styles.tabDescription} ${active === i ? styles.tabDescriptionActive : ''}`}>
-                          <div className={styles.tabDescriptionInner}>
-                            <span className={styles.tabDescriptionText}>{s.tabDescription}</span>
-                            <span className={styles.tabCta}>
-                              Ver más
-                              <svg className={styles.tabArrow} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </span>
-                          </div>
+                    <div className={styles.tabContent}>
+                      <span className={styles.tabTitle}>{s.title}</span>
+                      <div className={`${styles.tabDescription} ${active === i ? styles.tabDescriptionActive : ''}`}>
+                        <div className={styles.tabDescriptionInner}>
+                          <span className={styles.tabDescriptionText}>{s.tabDescription}</span>
+                          <span className={styles.tabCta}>
+                            Ver más
+                            <svg className={styles.tabArrow} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </span>
                         </div>
                       </div>
-                    </button>
-                    {i < SERVICES.length - 1 && <div className={styles.tabDivider} />}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+                    </div>
+                  </button>
+                  {i < SERVICES.length - 1 && <div className={styles.tabDivider} />}
+                </li>
+              ))}
+            </ul>
           </aside>
 
           {/* Content apilado */}

@@ -155,12 +155,10 @@
   position: -webkit-sticky;
   position: sticky;
   top: 6rem;
-  width: 300px;
-  flex-shrink: 0;
+  width: 18rem;
   height: fit-content;
+  flex-shrink: 0;
   display: none;
-  z-index: 10;
-  align-self: flex-start;
 }
 
 @media (min-width: 1024px) {
@@ -169,32 +167,13 @@
   }
 }
 
-.tabsContainer {
-  background: var(--gradient-metal);
-  border: 2px solid var(--steel-light);
-  border-radius: 1rem;
-  padding: 1rem;
-  box-shadow: var(--shadow-metal);
-  position: relative;
-  overflow: visible;
-  will-change: auto;
-}
-
-.tabsContainer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--gradient-gold);
-  border-radius: 1rem 1rem 0 0;
-}
-
 .tabsList {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .tabItem {
@@ -209,20 +188,16 @@
   text-align: left;
   cursor: pointer;
   transition: all 0.5s ease-out;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   position: relative;
 }
 
 .tab:hover {
-  background: rgba(79, 93, 117, 0.15);
+  background: rgba(79, 93, 117, 0.1);
 }
 
 .tabActive {
   background: transparent;
-}
-
-.tabActive:hover {
-  background: rgba(0, 212, 255, 0.05);
 }
 
 .tabContent {
@@ -234,18 +209,18 @@
 .tabTitle {
   font-size: 1.125rem;
   font-weight: 600;
-  color: rgba(205, 214, 244, 0.4);
+  color: rgba(205, 214, 244, 0.5);
   transition: all 0.5s ease-out;
 }
 
 .tab:hover .tabTitle {
-  color: rgba(205, 214, 244, 0.6);
+  color: rgba(205, 214, 244, 0.7);
 }
 
 .tabActive .tabTitle {
   font-size: 1.25rem;
   color: var(--white);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .tabDescription {
@@ -292,21 +267,7 @@
   position: relative;
   height: 1px;
   margin: 0.5rem 1rem;
-}
-
-.tabDivider::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, transparent, rgba(0, 212, 255, 0.3), transparent);
-}
-
-.tabDivider::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, transparent, rgba(0, 212, 255, 0.3), transparent);
-  filter: blur(2px);
+  background: linear-gradient(to right, transparent, rgba(0, 212, 255, 0.2), transparent);
 }
 
 /* Services Stack */
