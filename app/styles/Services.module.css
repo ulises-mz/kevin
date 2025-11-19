@@ -2,6 +2,7 @@
   background: var(--dark);
   padding: var(--spacing-4xl) 0;
   position: relative;
+  min-height: 100vh;
 }
 
 /* Decorative backgrounds */
@@ -122,6 +123,8 @@
 .stickyLayout {
   display: flex;
   gap: 2rem;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 @media (min-width: 1024px) {
@@ -130,24 +133,26 @@
   }
 }
 
-@media (max-width: 1023px) {
-  .stickyLayout {
-    flex-direction: column;
-  }
-}
-
 /* ASIDE STICKY - EXACTO COMO EJEMPLO */
 .stickyTabs {
   position: sticky;
+  position: -webkit-sticky;
   top: 6rem;
   height: fit-content;
-  width: 18rem;
-  display: none;
+  width: 100%;
+  flex-shrink: 0;
 }
 
 @media (min-width: 1024px) {
   .stickyTabs {
-    display: block;
+    width: 18rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .stickyTabs {
+    position: relative;
+    top: 0;
   }
 }
 
