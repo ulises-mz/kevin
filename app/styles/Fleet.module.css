@@ -124,6 +124,10 @@
   overflow: hidden;
   box-shadow: var(--shadow-metal);
   cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 240px; /* Fixed height matching valueCard */
 }
 
 .statBorder {
