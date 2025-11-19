@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
 import styles from '../styles/Hero.module.css';
-import { LightningIcon, TruckIcon, GearIcon, MapPinIcon, ClockIcon } from './Icons';
+import { LightningIcon } from './Icons';
 
 export default function Hero() {
   const ref = useRef(null);
@@ -16,13 +16,6 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '60%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.7, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-
-  const stats = [
-    { number: '12+', label: 'Camiones Propios', Icon: TruckIcon },
-    { number: '14+', label: 'Equipos de Arrastre', Icon: GearIcon },
-    { number: '100%', label: 'Cobertura Nacional', Icon: MapPinIcon },
-    { number: '24/7', label: 'Disponibilidad', Icon: ClockIcon },
-  ];
 
   const features = [
     'Contenedores 20-40-45 pies',
@@ -148,30 +141,6 @@ export default function Hero() {
                 <span>WhatsApp</span>
               </button>
             </motion.div>
-          </motion.div>
-
-          {/* Stats Grid - Mejorado con estilo industrial */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className={styles.statsGrid}
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className={styles.statCard}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              >
-                <div className={styles.statIcon}>
-                  <stat.Icon className={styles.statIconSvg} size={36} />
-                </div>
-                <div className={styles.statNumber}>{stat.number}</div>
-                <div className={styles.statLabel}>{stat.label}</div>
-                <div className={styles.statShine}></div>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
       </motion.div>
