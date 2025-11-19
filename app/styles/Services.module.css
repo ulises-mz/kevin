@@ -2,20 +2,6 @@
   background: var(--dark);
   padding: var(--spacing-4xl) 0;
   position: relative;
-  overflow: visible;
-}
-
-.services::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
-  pointer-events: none;
 }
 
 /* Decorative backgrounds */
@@ -28,7 +14,7 @@
   pointer-events: none;
   z-index: 0;
   color: var(--steel-light);
-  overflow: hidden;
+  opacity: 0.3;
 }
 
 .decorativeEngine {
@@ -40,7 +26,7 @@
   pointer-events: none;
   z-index: 0;
   color: var(--secondary);
-  overflow: hidden;
+  opacity: 0.3;
 }
 
 .container {
@@ -49,7 +35,6 @@
   padding: 0 var(--spacing-md);
   position: relative;
   z-index: 1;
-  overflow: visible;
 }
 
 @media (min-width: 768px) {
@@ -133,17 +118,15 @@
   opacity: 0.9;
 }
 
-/* Sticky Layout */
+/* LAYOUT STICKY - EXACTO COMO EJEMPLO */
 .stickyLayout {
   display: flex;
-  gap: 3rem;
-  align-items: flex-start;
-  position: relative;
+  gap: 2rem;
 }
 
 @media (min-width: 1024px) {
   .stickyLayout {
-    min-height: 100vh;
+    flex-direction: row;
   }
 }
 
@@ -153,14 +136,12 @@
   }
 }
 
-/* Tabs Sticky - Solo Desktop */
+/* ASIDE STICKY - EXACTO COMO EJEMPLO */
 .stickyTabs {
-  position: -webkit-sticky;
   position: sticky;
   top: 6rem;
-  width: 18rem;
   height: fit-content;
-  flex-shrink: 0;
+  width: 18rem;
   display: none;
 }
 
@@ -170,13 +151,11 @@
   }
 }
 
+/* TABS LIST */
 .tabsList {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
 }
 
 .tabItem {
@@ -184,19 +163,19 @@
 }
 
 .tab {
+  position: relative;
   width: 100%;
-  background: none;
-  border: none;
+  border-radius: 0.5rem;
   padding: 1rem;
   text-align: left;
-  cursor: pointer;
   transition: all 0.5s ease-out;
-  border-radius: 0.5rem;
-  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .tab:hover {
-  background: rgba(79, 93, 117, 0.1);
+  background: rgba(79, 93, 117, 0.2);
 }
 
 .tabActive {
@@ -216,21 +195,16 @@
   transition: all 0.5s ease-out;
 }
 
-.tab:hover .tabTitle {
-  color: rgba(205, 214, 244, 0.7);
-}
-
 .tabActive .tabTitle {
   font-size: 1.25rem;
   color: var(--white);
-  font-weight: 600;
 }
 
 .tabDescription {
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
-  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.7s ease-in-out;
 }
 
 .tabDescriptionActive {
@@ -240,6 +214,9 @@
 
 .tabDescriptionInner {
   overflow: hidden;
+}
+
+.tabDescriptionInner > div {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -248,7 +225,7 @@
 
 .tabDescriptionText {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--steel-lighter);
 }
 
@@ -257,7 +234,7 @@
   align-items: center;
   gap: 0.25rem;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--steel-lighter);
 }
 
@@ -270,10 +247,24 @@
   position: relative;
   height: 1px;
   margin: 0.5rem 1rem;
-  background: linear-gradient(to right, transparent, rgba(0, 212, 255, 0.2), transparent);
 }
 
-/* Services Stack */
+.tabDivider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(0, 212, 255, 0.3), transparent);
+}
+
+.tabDivider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(0, 212, 255, 0.3), transparent);
+  filter: blur(2px);
+}
+
+/* SERVICES STACK - EXACTO COMO EJEMPLO */
 .servicesStack {
   flex: 1;
   display: flex;
@@ -289,12 +280,6 @@
 
 .serviceCard {
   scroll-margin-top: 8rem;
-}
-
-@media (min-width: 1024px) {
-  .serviceCard {
-    scroll-margin-top: 8rem;
-  }
 }
 
 @media (max-width: 640px) {
@@ -313,30 +298,10 @@
   position: relative;
 }
 
-.serviceCardInner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 1.5rem;
-  padding: 2px;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(212, 175, 55, 0.2));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.serviceCardInner:hover::before {
-  opacity: 1;
-}
-
 .serviceCardInner:hover {
   transform: translateY(2px);
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(0, 212, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.2);
+  border-color: var(--secondary);
 }
 
 @media (max-width: 640px) {
@@ -420,14 +385,11 @@
 .serviceContent {
   padding: 2.5rem;
   background: var(--gradient-metal);
-  border-radius: 1.5rem 1.5rem 0 0;
-  margin-top: -1px;
 }
 
 @media (max-width: 640px) {
   .serviceContent {
     padding: 1.25rem;
-    border-radius: 1rem 1rem 0 0;
   }
 }
 
@@ -605,19 +567,4 @@
 
 .ctaButtonSecondary:hover {
   background: rgba(0, 212, 255, 0.1);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1023px) {
-  .container {
-    max-width: 100%;
-  }
-
-  .stickyLayout {
-    gap: 0;
-  }
-
-  .servicesStack {
-    width: 100%;
-  }
 }

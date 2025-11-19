@@ -334,13 +334,15 @@ export default function Services() {
                       <span className={styles.tabTitle}>{s.title}</span>
                       <div className={`${styles.tabDescription} ${active === i ? styles.tabDescriptionActive : ''}`}>
                         <div className={styles.tabDescriptionInner}>
-                          <span className={styles.tabDescriptionText}>{s.tabDescription}</span>
-                          <span className={styles.tabCta}>
-                            Ver más
-                            <svg className={styles.tabArrow} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </span>
+                          <div>
+                            <span className={styles.tabDescriptionText}>{s.tabDescription}</span>
+                            <span className={styles.tabCta}>
+                              Ver más
+                              <svg className={styles.tabArrow} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
