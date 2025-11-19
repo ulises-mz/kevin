@@ -2,7 +2,7 @@
   background: var(--dark);
   padding: var(--spacing-4xl) 0;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .services::before {
@@ -28,6 +28,7 @@
   pointer-events: none;
   z-index: 0;
   color: var(--steel-light);
+  overflow: hidden;
 }
 
 .decorativeEngine {
@@ -39,6 +40,7 @@
   pointer-events: none;
   z-index: 0;
   color: var(--secondary);
+  overflow: hidden;
 }
 
 .container {
@@ -47,6 +49,7 @@
   padding: 0 var(--spacing-md);
   position: relative;
   z-index: 1;
+  overflow: visible;
 }
 
 @media (min-width: 768px) {
