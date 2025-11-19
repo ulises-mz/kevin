@@ -3,6 +3,7 @@
   padding: var(--spacing-4xl) 0;
   position: relative;
   min-height: 100vh;
+  overflow-x: clip;
 }
 
 /* Decorative backgrounds */
