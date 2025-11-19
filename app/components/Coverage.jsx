@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import Image from 'next/image';
 import ScrollReveal from './ScrollReveal';
 import styles from '../styles/Coverage.module.css';
 import {
@@ -105,12 +106,24 @@ export default function Coverage() {
         </div>
 
         <ScrollReveal delay={0.5}>
-          <div className={styles.mapPlaceholder}>
-            <div className={styles.mapIcon}>🗺️</div>
-            <h3 className={styles.mapTitle}>Mapa de Costa Rica</h3>
-            <p className={styles.mapText}>
-              Desde puertos hasta el interior del país, llegamos a donde su carga necesita estar
-            </p>
+          <div className={styles.mapContainer}>
+            <div className={styles.mapImageWrapper}>
+              <Image
+                src="/images/map.png"
+                alt="Mapa de Costa Rica - Cobertura Nacional Transportes GEMA"
+                fill
+                className={styles.mapImage}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                quality={90}
+              />
+              <div className={styles.mapOverlay}></div>
+            </div>
+            <div className={styles.mapContent}>
+              <h3 className={styles.mapTitle}>Mapa de Costa Rica</h3>
+              <p className={styles.mapText}>
+                Desde puertos hasta el interior del país, llegamos a donde su carga necesita estar
+              </p>
+            </div>
           </div>
         </ScrollReveal>
 
