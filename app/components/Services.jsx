@@ -322,27 +322,14 @@ export default function Services() {
         {/* Sticky Layout: Tabs + Content */}
         <div className={styles.stickyLayout}>
           {/* Tabs sticky - Solo visible en desktop */}
-          <motion.aside
-            className={styles.stickyTabs}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <motion.div
-              className={styles.tabsContainer}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-            >
+          <aside className={styles.stickyTabs}>
+            <div className={styles.tabsContainer}>
               <ul className={styles.tabsList}>
                 {SERVICES.map((s, i) => (
                   <li key={s.id} className={styles.tabItem}>
-                    <motion.button
+                    <button
                       onClick={() => scrollToIndex(i)}
                       className={`${styles.tab} ${active === i ? styles.tabActive : ''}`}
-                      whileHover={{ x: 4 }}
-                      transition={{ duration: 0.2 }}
                     >
                       <div className={styles.tabContent}>
                         <span className={styles.tabTitle}>{s.title}</span>
@@ -358,13 +345,13 @@ export default function Services() {
                           </div>
                         </div>
                       </div>
-                    </motion.button>
+                    </button>
                     {i < SERVICES.length - 1 && <div className={styles.tabDivider} />}
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          </motion.aside>
+            </div>
+          </aside>
 
           {/* Content apilado */}
           <div className={styles.servicesStack}>
