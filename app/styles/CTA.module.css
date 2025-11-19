@@ -85,7 +85,8 @@
 }
 
 .badgeIcon {
-  font-size: 1.1rem;
+  color: var(--secondary);
+  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
   animation: pulse-glow 2s ease-in-out infinite;
 }
 

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
 import styles from '../styles/CTA.module.css';
+import { LightningIcon, ClockIcon, DollarIcon, HeadsetIcon } from './Icons';
 
 export default function CTASection() {
   const handleWhatsAppClick = () => {
@@ -27,7 +28,7 @@ export default function CTASection() {
         <ScrollReveal>
           <div className={styles.content}>
             <div className={styles.badge}>
-              <span className={styles.badgeIcon}>⚡</span>
+              <LightningIcon className={styles.badgeIcon} size={18} />
               Contacto Directo
             </div>
             <h2 className={styles.title}>¿Listo para Transportar su Carga?</h2>
@@ -84,21 +85,21 @@ export default function CTASection() {
 
             <div className={styles.infoBox}>
               <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>⏱️</span>
+                <ClockIcon className={styles.infoIcon} size={24} />
                 <div>
                   <h4>Respuesta Rápida</h4>
                   <p>Contestamos en menos de 24 horas</p>
                 </div>
               </div>
               <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>💰</span>
+                <DollarIcon className={styles.infoIcon} size={24} />
                 <div>
                   <h4>Sin Compromiso</h4>
                   <p>Cotizaciones gratuitas y sin obligación</p>
                 </div>
               </div>
               <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>🤝</span>
+                <HeadsetIcon className={styles.infoIcon} size={24} />
                 <div>
                   <h4>Asesoría Personalizada</h4>
                   <p>Le ayudamos a encontrar la mejor solución</p>
