@@ -108,7 +108,7 @@ export default function Fleet() {
               >
                 <div className={styles.statBorder}></div>
                 <div className={styles.statIcon}>
-                  <stat.Icon className={styles.statIconSvg} size={40} />
+                  <stat.Icon className={styles.statIconSvg} />
                 </div>
                 <div className={styles.statNumber}>
                   <AnimatedCounter value={stat.number} suffix={stat.suffix} />

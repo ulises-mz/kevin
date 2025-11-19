@@ -1,7 +1,7 @@
 // SVG Icons para Transportes GEMA
 
 // Camión Cabezal/Tractor (sin remolque)
-export const TruckIcon = ({ className, size = 24 }) => (
+export const TruckIcon = ({ className, size }) => (
   <svg width={size} height={size} viewBox="0 0 32 24" fill="none" className={className}>
     {/* Cabina principal */}
     <path d="M4 10h8v9H4V10z" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
@@ -79,7 +79,7 @@ export const ChemicalIcon = ({ className, size = 24 }) => (
 );
 
 // Remolque/Furgón de Camión
-export const TrailerIcon = ({ className, size = 24 }) => (
+export const TrailerIcon = ({ className, size }) => (
   <svg width={size} height={size} viewBox="0 0 32 24" fill="none" className={className}>
     {/* Estructura principal del container/furgón */}
     <rect x="6" y="6" width="20" height="11" rx="0.5" fill="currentColor" fillOpacity="0.12" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
@@ -149,14 +149,14 @@ export const ShieldCheckIcon = ({ className, size = 24 }) => (
   </svg>
 );
 
-export const ClockIcon = ({ className, size = 24 }) => (
+export const ClockIcon = ({ className, size }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
     <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
-export const MapPinIcon = ({ className, size = 24 }) => (
+export const MapPinIcon = ({ className, size }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="currentColor" strokeWidth="2" fill="none"/>
     <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -193,7 +193,7 @@ export const GlobeIcon = ({ className, size = 24 }) => (
   </svg>
 );
 
-export const TargetIcon = ({ className, size = 24 }) => (
+export const TargetIcon = ({ className, size }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
     <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -201,20 +201,20 @@ export const TargetIcon = ({ className, size = 24 }) => (
   </svg>
 );
 
-export const HandshakeIcon = ({ className, size = 24 }) => (
+export const HandshakeIcon = ({ className, size }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <path d="M2 11L9 4L13 8L20 1M20 1V6M20 1H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
     <path d="M6 16L4 18L2 20M12 16L9 19L6 22M18 16L21 19L24 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
   </svg>
 );
 
-export const MuscleIcon = ({ className, size = 24 }) => (
+export const MuscleIcon = ({ className, size }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <path d="M14 7C14 5.34315 12.6569 4 11 4C9.34315 4 8 5.34315 8 7M8 7C8 8.10457 7.10457 9 6 9C4.89543 9 4 9.89543 4 11V16C4 18.2091 5.79086 20 8 20H11C13.7614 20 16 17.7614 16 15V9C16 7.89543 15.1046 7 14 7H8Z" stroke="currentColor" strokeWidth="2" fill="none"/>
   </svg>
 );
 
-export const FamilyIcon = ({ className, size = 24 }) => (
+export const FamilyIcon = ({ className, size }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
     <circle cx="7" cy="5" r="2" stroke="currentColor" strokeWidth="2" fill="none"/>
     <circle cx="17" cy="5" r="2" stroke="currentColor" strokeWidth="2" fill="none"/>

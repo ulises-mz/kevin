@@ -125,7 +125,7 @@ export default function About() {
                 whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
               >
                 <div className={styles.valueIconWrapper}>
-                  <value.Icon className={styles.valueIcon} size={40} />
+                  <value.Icon className={styles.valueIcon} />
                 </div>
                 <h3 className={styles.valueTitle}>{value.title}</h3>
                 <p className={styles.valueDescription}>{value.description}</p>

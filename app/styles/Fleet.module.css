@@ -117,7 +117,7 @@
   background: var(--gradient-metal);
   border: 2px solid var(--steel-light);
   border-radius: var(--radius-md);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
   text-align: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -127,7 +127,21 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 240px; /* Fixed height matching valueCard */
+  gap: var(--spacing-sm);
+  min-height: 260px; /* Responsive height for mobile */
+}
+
+@media (min-width: 640px) {
+  .statCard {
+    padding: var(--spacing-xl);
+    min-height: 280px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .statCard {
+    min-height: 300px;
+  }
 }
 
 .statBorder {
@@ -154,17 +168,27 @@
 
 .statIcon {
   font-size: 3rem;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 0;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
   transition: transform 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .statIconSvg {
   color: var(--secondary);
   filter: drop-shadow(0 4px 10px rgba(212, 175, 55, 0.3));
+  width: 36px;
+  height: 36px;
+}
+
+@media (min-width: 640px) {
+  .statIconSvg {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .statCard:hover .statIcon {
@@ -172,23 +196,25 @@
 }
 
 .statNumber {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 900;
   background: var(--gradient-gold);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'Rajdhani', 'Montserrat', sans-serif;
-  margin-bottom: 0.5rem;
-  line-height: 1;
+  margin-bottom: 0;
+  line-height: 1.1;
+  flex-shrink: 0;
 }
 
 .statLabel {
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 2vw, 1rem);
   color: var(--steel-lighter);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  line-height: 1.4;
 }
 
 .statGlow {

@@ -246,7 +246,7 @@
   background: var(--gradient-metal);
   border: 2px solid var(--steel-light);
   border-radius: var(--radius-md);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
   text-align: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -255,7 +255,22 @@
   cursor: default;
   display: flex;
   flex-direction: column;
-  height: 240px; /* Fixed height for all cards */
+  min-height: 260px; /* Responsive height for mobile */
+  justify-content: flex-start;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+  .valueCard {
+    padding: var(--spacing-xl);
+    min-height: 280px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .valueCard {
+    min-height: 300px;
+  }
 }
 
 .valueCard::before {
@@ -282,17 +297,25 @@
 }
 
 .valueIconWrapper {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
   border: 2px solid var(--steel-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto var(--spacing-lg);
+  margin: 0 auto;
   transition: all 0.4s ease;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .valueIconWrapper {
+    width: 70px;
+    height: 70px;
+  }
 }
 
 .valueCard:hover .valueIconWrapper {
@@ -306,6 +329,15 @@
   color: var(--steel-lighter);
   transition: all 0.4s ease;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+  width: 32px;
+  height: 32px;
+}
+
+@media (min-width: 640px) {
+  .valueIcon {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .valueCard:hover .valueIcon {
@@ -313,20 +345,25 @@
 }
 
 .valueTitle {
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
   font-weight: 700;
   color: var(--white);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 0;
   font-family: 'Rajdhani', 'Montserrat', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  flex-shrink: 0;
 }
 
 .valueDescription {
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   color: var(--steel-lighter);
-  line-height: 1.7;
+  line-height: 1.6;
   opacity: 0.9;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .valueGlow {
